@@ -54,8 +54,10 @@ I/O の位置と名前、約束事、記号の意味がわかれば、とりあ�
 1 ビットの記憶回路は以下のようになる：
 
 <center>
-<img src="./images/prog1.png" width="50%"/>
+<img src="./images/ladder_program1.png" width="50%"/>
 </center>
+
+こちらのプログラム例は <a href="./Sample.zip"/>Sample.zip</a> からダウンロードできる。
 
 ## OpenPLC での Raspberry Pi の入出力端子
 
@@ -64,7 +66,7 @@ OpenPLC で使える入力端子にはつぎのように名前がついている
 - **%IX#.#** は入力
 - **%QX#.#** は出力  
 
-ピンにはハードウェア上のつぎの制限がある：
+Raspberry Pi で OpenPLC (の Runtime) を実行する場合、Rasbperry Pi のハードウェア上、ピンにはつぎの制限がある：
 
 - 端子への入力は 3.3V でないといけない  
 (PLC のように) 24V ではないので注意する
@@ -99,10 +101,9 @@ OpenPLC で使える入力端子にはつぎのように名前がついている
 |37| %IX1.5    |38| %QX1.1 |
 |39| GND       |40| %QX1.2 |
 
+# OpenPLC Runtime
 
-## OpenPLC Runtime
-
-### ホスト名の設定
+## ホスト名の設定
 
 ネットワーク経由でアクセスするために RaspberryPi にホスト名をつける
 
@@ -137,4 +138,86 @@ dpkg -i wiringpi-2.61-1-arm64.deb
 gpio コマンドが動作すれば OK:
 ```
 gpio -v 
+gpio version: 2.61
+Copyright (c) 2012-2018 Gordon Henderson
+This is free software with ABSOLUTELY NO WARRANTY.
+For details type: gpio -warranty
+
+Raspberry Pi Details:
+  Type: Pi 3B+, Revision: 03, Memory: 1024MB, Maker: Sony
+  * Device tree is enabled.
+  *--> Raspberry Pi 3 Model B Plus Rev 1.3
+  * This Raspberry Pi supports user-level GPIO access.
 ```
+
+# OpenPLC Editor 起動
+
+起動画面が立ちあったら、File => New を選択し、空のフォルダを作成しプロジェクトフォルダにする。
+
+<center>
+<img src="./images/screen2.png">
+</center>
+
+## ラダーのプログラミング
+
+画面上部に使用する変数を宣言し、画面下部にラダー図を記入する。
+
+<center>
+<img src="./images/screen3.png">
+</center>
+
+## プログラムのシミュレーション実行
+
+画面上の人型アイコンでプログラムをシミュレーション実行できる。
+画面左のメガネアイコンをクリックするとラダープログラムのモニタが表示される。
+
+モニタでは、配線や接点（スイッチ）が通電している状態は緑色で示される。
+モニタを終了するにはタブを閉じるだけでよい。
+
+<center>
+<img src="./images/debug.png">
+</center>
+<center>
+<img src="./images/megane1.png">
+</center>
+
+### 強制 ON/OFF 機能
+
+「スイッチを押したり離したり」を再現するには、強制 ON/OFF 機能を使う。
+接点やコイルを右クリックすると Force True (強制ON), Force False (強制 OFF), Release Value (強制操作の終了) のメニューが表示される。
+
+#### SW1 を強制 ON
+
+SW1 を強制 ON にすると CR3 も ON になる。
+SW1 を強制 OFF にすると SW1 は濃い青色に変化する。
+
+<center>
+<img src="./images/ForceONOFF.png">
+<img src="./images/running.png">
+</center>
+
+#### SW2 を強制 ON
+
+SW2 を強制 ON すると CR2 が ON となって、下段 CR2 の B 接点が OFF になり、CR3 の保持プログラムが切れる。
+
+<center>
+<img src="./images/programend.png">
+</center>
+
+### ラダーの順番やその他
+
+- ラダーの上下はプログラムの動作には関係ない
+- パワートレイン (電源ライン) はそれぞれが切れていてもよい。
+
+## 変数のモニタ機能
+
+OpenPLC エディタにはもう一つのデバッグ機能 (変数のモニタ) がある。
+左下窓のリストからモニタ (確認) したい変数のメガネアイコンをクリックする。
+
+<center>
+<img src="./images/hensumonitor.png">
+</center>
+
+<center>
+<img src="./images/monitor.png" width="50%"/>
+</center>
