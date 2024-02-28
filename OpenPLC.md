@@ -90,7 +90,7 @@ Raspberry Pi で OpenPLC (の Runtime) を実行する場合、Rasbperry Pi の�
 |15| %IX0.5    |16| %QX0.2 |
 |17| 3.3V Power|18| %QX0.3 |
 |19| %IX0.6    |20| GND|
-|21| %IX0.7 Power |22| %QX0.4 |
+|21| %IX0.7    |22| %QX0.4 |
 |23| %IX1.0    |24| %QX0.5 |
 |25| GND       |26| %QX0.6 |
 |27| NC        |28| N/A |
