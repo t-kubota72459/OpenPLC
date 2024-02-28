@@ -123,3 +123,41 @@ PLC 業界が 24V の理由はいろいろあるようです。興味のある�
 接続を誤って 24V を Raspberry Pi に直接印加（入力）すると、必ず！ Raspberry Pi が壊れます。  
 不安なひとは作成した回路を先生に確認してもらってください。
 
+# OpenPLC から Python へ
+
+みなさんの進捗状況がいいので、ここではラダーから Python プログラムへの変更をやってみようと思います。
+
+GPIO の関数を使います。
+
+- GPIO.setmode ... 物理ピン番号で指定します
+- GPIO.setup ... ピンの入力 / 出力を決めます
+- GPIO.add_event_detect ... 指定のイベントが起きたら第３引数の関数を実行します
+- global ... スコープの外にある変数を変更します
+
+```
+import RPi.GPIO as GPIO
+import time
+memory = 0
+
+GPIO.setmode(GPIO.BOARD)
+
+GPIO.setup(11, GPIO.IN)         # %IX0.3
+GPIO.add_event_detect(11, GPIO.RISING, myset)
+
+GPIO.setup(13, GPIO.IN)         # %IX0.4
+GPIO.add_event_detect(11, GPIO.RISING, myreset)
+
+GPIO.setup(8, GPIO.OUT)         # %QX0.0
+
+def myset():
+    global memory
+    memory = 1
+
+def myreset():
+    global memory
+    memory = 0
+
+while True:
+    GPIO.output(8, memory)
+    time.sleep(1)
+```
