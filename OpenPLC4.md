@@ -148,7 +148,7 @@ M3 など一般的なサイズが選択できる。
 
 ねじ穴を配置した先生の作例：
 
-<img src="./images/SampleCircuit_プリント基板.png" width="100%">
+<img src="./images/SampleCircuit_board.png" width="100%">
 
 ## 基板の作成
 
