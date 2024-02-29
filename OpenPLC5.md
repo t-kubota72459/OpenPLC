@@ -15,7 +15,7 @@
 回路は以下のようになる。
 P&P に電源が必要な場合にはその部分に改良を加える。
 
-<img src="./images/P_and_P_回路図.png">
+<img src="./images/P_and_P_circuit.png">
 
 # 演習
 
