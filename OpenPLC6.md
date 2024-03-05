@@ -19,3 +19,8 @@ Medium でも刺さることを確認しました。
 - <a href="PandP_copperBottom.gbl">PandP_copperBottom.gbl</a>
 - <a href="PandP_drill.txt">PandP_drill.txt</a>
 
+## ピン配置表
+
+P&P 側の 34 ピンのピン配置：
+
+<img src="./images/pinassign.png" width="60%">
