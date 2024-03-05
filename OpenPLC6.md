@@ -11,3 +11,11 @@
 ## 補足：ピンヘッダの穴のおおきさ
 
 Medium でも刺さることを確認しました。
+
+## ガーバーデータ
+穴の大きさなど、一連の必要な修正済みのガーバーデータはこちら：
+
+- <a href="PandP_contour.gm1">PandP_contour.gm1</a>
+- <a href="PandP_copperBottom.gbl">PandP_copperBottom.gbl</a>
+- <a href="PandP_drill.txt">PandP_drill.txt</a>
+
