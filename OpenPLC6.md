@@ -23,4 +23,4 @@ Medium でも刺さることを確認しました。
 
 P&P 側の 34 ピンのピン配置：
 
-<img src="./images/pinassign.png" width="60%">
+<img src="./images/pinassign.png" width="40%">
